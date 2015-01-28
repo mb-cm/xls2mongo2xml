@@ -1,7 +1,4 @@
-#absolutePath nbSheets
-#ex : /home/user/test.xslx 3
 #WARNING if your filepath contains blank characters, replace by java unicolde \u0020
-#ex : /home/user/another\u0020test.xslx 3
-
-
+patientDir = src/main/resources/CBSDfiles/patient
+stockDir = src/main/resources/CBSDfiles/stock
 
