@@ -41,7 +41,11 @@ public class Injector {
 			DBCollection patients = db.getCollection(PATIENT_COLLECTION);
 			patients.drop();
 			String patientDirPath = excelFilesProperties.getProperty("patientDir");
-			File[] patientFiles = new File(patientDirPath).listFiles();
+			File patientDir = new File(patientDirPath);
+			if (!patientDir.exists()) {
+				JOptionPane.showMessageDialog(null, "Le répertoire '"+patientDirPath+"' n'existe pas");
+			}
+			File[] patientFiles = patientDir.listFiles();
 
 			int count=0;
 			for (File file : patientFiles) {
@@ -61,7 +65,11 @@ public class Injector {
 			stocks.drop();
 
 			String stockDirPath = excelFilesProperties.getProperty("stockDir");
-			File[] stockFiles = new File(stockDirPath).listFiles();
+			File stockDir = new File(stockDirPath);
+			if (!stockDir.exists()) {
+				JOptionPane.showMessageDialog(null, "Le répertoire '"+stockDirPath+"' n'existe pas");
+			}
+			File[] stockFiles = stockDir.listFiles();
 
 			for (File file : stockFiles) {
 				List<BasicDBObject> list = Extractor.excelExtract(file);
@@ -73,10 +81,10 @@ public class Injector {
 
 			System.out.println(count +" stocks insérés");
 
-			JOptionPane.showMessageDialog(null, "Extraction effectuÃ©e avec succÃ¨s.");
+			JOptionPane.showMessageDialog(null, "Extraction effectuée avec succès.");
 		} catch (Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Une erreur est survenue, l'exportation a Ã©chouÃ©e.");
+			JOptionPane.showMessageDialog(null, "Une erreur est survenue, l'exportation a échouée.");
 		}
 	}
 

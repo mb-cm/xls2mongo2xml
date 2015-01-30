@@ -41,12 +41,12 @@ public class Extractor {
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			// fermeture du flux
 			fis.close();
-			// parcours des feuilles du fichier, basÃ©e sur le nombre de feuilles
+			// parcours des feuilles du fichier, basée sur le nombre de feuilles
 			// fourni
 			for (int i = 0; i < wb.getNumberOfSheets(); i++) {
 				XSSFSheet activeSheet = wb.getSheetAt(i);
 				Iterator<Row> rowIter = activeSheet.rowIterator();
-				// passage du curseur Ã  la premiÃ¨re ligne, considÃ©rÃ©e comme la
+				// passage du curseur à la première ligne, considérée comme la
 				// ligne d'entete
 				if (!rowIter.hasNext()) {
 					continue;
@@ -54,14 +54,14 @@ public class Extractor {
 				XSSFRow enteteRow = (XSSFRow) rowIter.next();
 				Iterator<Cell> cellIter = enteteRow.cellIterator();
 				int nbCol = 0;
-				// rÃ©cupÃ©ration du nombre de colonnes Ã  exploiter
+				// récupération du nombre de colonnes à exploiter
 				while (cellIter.hasNext()) {
 					nbCol++;
 					cellIter.next();
 				}
 				XSSFRow activeRow = null;
 				/*
-				 * parcours des lignes de la feuille. Si la premiÃ¨re cellule
+				 * parcours des lignes de la feuille. Si la première cellule
 				 * d'une ligne est vide, on arrete le parcours.
 				 */
 				while (rowIter.hasNext()) {

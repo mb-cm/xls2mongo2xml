@@ -2,10 +2,12 @@ package injection;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Properties;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 
 /**
@@ -40,22 +42,26 @@ public class MongoSingleton {
 				.println("Impossible de charger le fichier de configuration");
 			}
 			try {
-				//				MongoCredential credentials = MongoCredential
-				//						.createMongoCRCredential(dbConnectionProperties
-				//								.getProperty("login"), dbConnectionProperties
-				//								.getProperty("dbConnection"),
-				//								dbConnectionProperties.getProperty("password")
-				//								.toCharArray());
+				if (dbConnectionProperties.getProperty("login").isEmpty()) {
+					mongoClient = new MongoClient(new ServerAddress(
+							dbConnectionProperties.getProperty("server"),
+							Integer.parseInt(dbConnectionProperties
+									.getProperty("port"))));
 
-				mongoClient = new MongoClient(new ServerAddress(
-						dbConnectionProperties.getProperty("server"),
-						Integer.parseInt(dbConnectionProperties
-								.getProperty("port"))));
-				//				mongoClient = new MongoClient(new ServerAddress(
-				//						dbConnectionProperties.getProperty("server"),
-				//						Integer.parseInt(dbConnectionProperties
-				//								.getProperty("port"))),
-				//								Arrays.asList(credentials));
+				} else {
+					MongoCredential credentials = MongoCredential
+							.createMongoCRCredential(dbConnectionProperties
+									.getProperty("login"), dbConnectionProperties
+									.getProperty("dbConnection"),
+									dbConnectionProperties.getProperty("password")
+									.toCharArray());
+
+					mongoClient = new MongoClient(new ServerAddress(
+							dbConnectionProperties.getProperty("server"),
+							Integer.parseInt(dbConnectionProperties
+									.getProperty("port"))),
+									Arrays.asList(credentials));
+				}
 
 				db = mongoClient.getDB(dbConnectionProperties
 						.getProperty("dbName"));

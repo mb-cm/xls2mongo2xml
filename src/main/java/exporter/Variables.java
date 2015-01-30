@@ -2,34 +2,32 @@ package exporter;
 
 /**
  * Correspondance entre l'item XML et le titre de colonne Excel
+ * Quand le titre est vide, c'est que l'item ne peut être directement relié à une seule colonne Excel
  */
 enum Variables {
 
-	id_donor ("?"),
+	id_donor (""),
 	birthName ("nom de jeune fille"),
 	useName ("Nom"),
 	firstName ("Prénom"),
 	birthDate ("date naissance"),
-	id_depositor ("?"),
-	id_family ("famille"),
-	id_sample ("?"),
-	consent_ethical ("?"),
 	gender ("sexe"),
-	age ("âge au prélèvement"),
-	pathology ("?"),
-	status_sample ("?"),
+	quantity_available ("Volume (µl)"),
+	quantity_available2 ("Concentration (ng/µl)"),
 	collect_date ("date de prélèvement"),
 	collect_date2 ("date de traitement"),
-	nature_sample_dna ("?"),
-	storage_conditions ("?"),
-	quantity ("Volume (µl)"),
-	biobank_id ("?"),
-	biobank_date_entry ("?"),
-	biobank_collection_id ("?"),
+	id_sample ("genethon"),
+	consent_ethical (""),
+	id_family ("famille"),
+	age ("âge au prélèvement"),
+	storage_conditions ("Congélateur"),
+	pathology ("patho"),
+	status_sample ("statut"),
+	consent (""),
 
 	notfound ("");
 
-	private String title;
+	private final String title;
 
 	private Variables(String title) {
 		this.title = title;
