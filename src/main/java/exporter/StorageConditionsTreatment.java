@@ -13,11 +13,11 @@ class StorageConditionsTreatment extends AbstractTreatment {
 	String get(List<BasicDBObject> list, Variables variable) {
 		String containerName = getValue(list, Variables.storage_conditions);
 		if (containerName.equals("2")) {
-			return "-30C";
+			return "-30";
 		} else if (containerName.equals("4")) {
-			return "-20C";
+			return "-20";
 		}
-		return "-80C";
+		return "-80";
 	}
 
 }
