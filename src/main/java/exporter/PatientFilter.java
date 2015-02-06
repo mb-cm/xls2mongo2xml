@@ -1,11 +1,12 @@
 package exporter;
 
+import injection.Extractor;
+
 import java.util.List;
 
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBObject;
 
-import extraction.Extractor;
 
 class PatientFilter {
 

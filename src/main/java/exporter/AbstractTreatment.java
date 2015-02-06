@@ -1,10 +1,11 @@
 package exporter;
 
+import injection.Extractor;
+
 import java.util.List;
 
 import com.mongodb.BasicDBObject;
 
-import extraction.Extractor;
 
 abstract class AbstractTreatment {
 

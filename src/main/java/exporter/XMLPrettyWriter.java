@@ -7,7 +7,7 @@ import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
-public class XMLPrettyWriter {
+class XMLPrettyWriter {
 
 	private static final String FILE_NAME = "CBSD_banqueADN_v0.5-1.xml";
 

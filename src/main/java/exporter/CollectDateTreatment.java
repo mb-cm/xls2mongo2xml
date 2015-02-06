@@ -1,5 +1,7 @@
 package exporter;
 
+import injection.Extractor;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,7 +10,6 @@ import java.util.List;
 
 import com.mongodb.BasicDBObject;
 
-import extraction.Extractor;
 
 class CollectDateTreatment extends AbstractTreatment {
 
@@ -31,7 +32,7 @@ class CollectDateTreatment extends AbstractTreatment {
 			date = removeOneDay(date);
 		}
 
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat outputFormat = new SimpleDateFormat(XMLExporter.YYYY_MM_DD);
 		String formatted = outputFormat.format(date);
 
 		return formatted;

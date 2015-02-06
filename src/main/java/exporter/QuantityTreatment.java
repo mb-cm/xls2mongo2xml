@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mongodb.BasicDBObject;
 
-public class QuantityTreatment extends AbstractTreatment {
+class QuantityTreatment extends AbstractTreatment {
 
 	@Override
 	String get(List<BasicDBObject> list, Variables variable) {

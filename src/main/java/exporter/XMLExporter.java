@@ -1,5 +1,6 @@
 package exporter;
 
+import injection.Extractor;
 import injection.Injector;
 import injection.MongoSingleton;
 
@@ -15,11 +16,11 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
-import extraction.Extractor;
 
 public class XMLExporter {
 
 	private static final String BANQUE_ADN = "BanqueADN";
+	static final String YYYY_MM_DD = "yyyy-MM-dd";
 
 	public void run() {
 		DB db = MongoSingleton.getDb();

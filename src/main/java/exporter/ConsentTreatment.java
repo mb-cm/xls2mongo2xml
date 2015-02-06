@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.mongodb.BasicDBObject;
 
-public class ConsentTreatment extends AbstractTreatment {
+class ConsentTreatment extends AbstractTreatment {
 
 	@Override
 	String get(List<BasicDBObject> list, Variables variable) {
